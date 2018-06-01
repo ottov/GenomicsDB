@@ -28,7 +28,7 @@ if(HTSLIB_SOURCE_DIR)
         CONFIGURE_COMMAND ${HTSLIB_SOURCE_DIR}/configure CFLAGS=${HTSLIB_${CMAKE_BUILD_TYPE}_CFLAGS} LDFLAGS=${HTSLIB_${CMAKE_BUILD_TYPE}_LDFLAGS}
             CC=${CMAKE_C_COMPILER} AR=${CMAKE_AR} RANLIB=${CMAKE_RANLIB}
             ${HTSLIB_OSXCROSS_COMPILE_FLAGS}
-            --disable-lzma --disable-bz2 --disable-libcurl
+            --enable-libcurl --enable-s3 --enable-gcs
         BUILD_COMMAND ${CMAKE_COMMAND} -E make_directory cram
             COMMAND ${CMAKE_COMMAND} -E make_directory test
             COMMAND $(MAKE) -f ${HTSLIB_SOURCE_DIR}/Makefile VPATH=${HTSLIB_SOURCE_DIR} SOURCE_DIR=${HTSLIB_SOURCE_DIR}
